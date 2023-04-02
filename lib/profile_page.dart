@@ -1,4 +1,3 @@
-import 'dart:html';
 import 'package:carrot/edit_page.dart';
 import 'package:flutter/material.dart';
 
@@ -14,19 +13,21 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: showProfile(),
+      home: ProfilePage(),
     );
   }
 }
 
-class showProfile extends StatefulWidget {
-  const showProfile({super.key});
+class ProfilePage extends StatefulWidget {
+  const ProfilePage({super.key});
 
   @override
-  State<showProfile> createState() => _showProfileState();
+  State<ProfilePage> createState() => _ProfilePageState();
 }
 
-class _showProfileState extends State<showProfile> {
+class _ProfilePageState extends State<ProfilePage> {
+  String userName = "user_name";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,18 +46,27 @@ class _showProfileState extends State<showProfile> {
         body: Container(
           margin: const EdgeInsets.symmetric(horizontal: 8),
           child: ListView(
-            children: [
-              editProfile(context)
-            ],
+            children: [EditProfileWidget()],
           )
         )
     );    
   }
 }
 
-Widget editProfile(BuildContext context) {
-  return Container(
-    child: Column(
+class EditProfileWidget extends StatefulWidget {
+  const EditProfileWidget({super.key});
+
+  @override
+  State<EditProfileWidget> createState() => _EditProfileWidgetState();
+}
+
+class _EditProfileWidgetState extends State<EditProfileWidget> {
+  TextEditingController inputController = TextEditingController();
+  String inputText = '';
+  @override
+  Widget build(BuildContext cnotext) {
+    return SizedBox(
+      child: Column(
       children: [
         Row(
           children: [
@@ -68,12 +78,6 @@ Widget editProfile(BuildContext context) {
               width: 20,
             ),
             Text(('user_name'), style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600),),
-            // Expanded(child: GestureDetector(
-            //   onTap: () {
-            //     Navigator.push(context, MaterialPageRoute(builder: ((context) => editPage())));
-            //   }
-            //   ),
-            // )
           ],
         ),
         SizedBox(height: 20),
@@ -99,5 +103,7 @@ Widget editProfile(BuildContext context) {
         )
       ],
     )
-  );
+
+    );
+  }
 }

@@ -1,5 +1,5 @@
 import 'package:carrot/interest_list.dart';
-import 'package:carrot/show_profile.dart';
+import 'package:carrot/profile_page.dart';
 import 'package:flutter/material.dart';
 
 // void main() {
@@ -88,7 +88,7 @@ Widget profileWidget(BuildContext context) {
             backgroundImage: AssetImage("assets/images/person.jpg"),
           ),
           const Text(
-            ('  User_name'),
+            ('  user_name'),
             style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
           ),
           Expanded(
@@ -113,7 +113,7 @@ Widget profileWidget(BuildContext context) {
                 // )
               ElevatedButton(
               onPressed: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>showProfile()));
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>ProfilePage()));
               },
               style: ElevatedButton.styleFrom(
                 // minimumSize: ,
